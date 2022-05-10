@@ -1,49 +1,49 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Calculation {
-
-    final int MAX_SIZE = 5;
-    private String[] strArray = new String[MAX_SIZE];
-
-    private int size;
+    List<Integer> integerList = new ArrayList<Integer>();
 
     public int size() {
-        return size;
+        return integerList.size();
     }
-    public void addOperand(String element) {
-        strArray[size++] = element;
+    public void addOperand(int element) {
+        integerList.add(element);
     }
 
-    public void addOperation(String operation) {
-        if(operation == "+" || operation == "-" || operation == "*" || operation == "/") {
-            strArray[size++] = operation;
+    public boolean check(char operation) {
+        if(operation == '+' || operation == '-' || operation == '*' || operation == '/') {
+            return true;
         }
         else {
             throw new IllegalArgumentException("Unsupported operator!");
         }
     }
 
-    public double calculate() {
+    public double calculate(char operation) {
         double result = 0;
-        double first = Integer.parseInt(String.valueOf(strArray[0]));
-        double second = Integer.parseInt(String.valueOf(strArray[2]));
+        double firstOperand = Integer.parseInt(String.valueOf(integerList.get(0)));
+        double secondOperand = Integer.parseInt(String.valueOf(integerList.get(1)));
 
-        switch (strArray[1]) {
-            case "+":
-                result = first + second;
-                break;
-            case "-":
-                result = first - second;
-                break;
-            case "*":
-                result = first * second;
-                break;
-            case "/":
-                if(second == 0) {
-                    throw new ArithmeticException("Division by 0 is not possible!");
-                }
-                else {
-                    result = Math.round((first / second) * 100.0) / 100.0;
+        if(check(operation)) {
+            switch (operation) {
+                case '+':
+                    result = firstOperand + secondOperand;
                     break;
-                }
+                case '-':
+                    result = firstOperand - secondOperand;
+                    break;
+                case '*':
+                    result = firstOperand * secondOperand;
+                    break;
+                case '/':
+                    if (secondOperand == 0) {
+                        throw new ArithmeticException("Division by 0 is not possible!");
+                    } else {
+                        result = Math.round((firstOperand / secondOperand) * 100.0) / 100.0;
+                        break;
+                    }
+            }
         }
         return result;
     }

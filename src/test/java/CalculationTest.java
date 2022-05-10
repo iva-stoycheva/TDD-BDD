@@ -10,18 +10,17 @@ public class CalculationTest {
     public void setup() {
         tokens = new Calculation();
 
-        tokens.addOperand("5");
-        tokens.addOperation("+");
-        tokens.addOperand("3");
+        tokens.addOperand(5);
+        tokens.addOperand(3);
     }
 
     @Test
     public void whenAddElementsCheckMyListSize() {
-        assertEquals(3, tokens.size());
+        assertEquals(2, tokens.size());
     }
 
     @Test
     public void calculateTest() {
-        assertEquals(8, tokens.calculate());
+        assertEquals(8, tokens.calculate('+'));
     }
 }
