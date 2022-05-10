@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ListTest {
     List emptyList;
     List oneElementList;
-    List threeElementListRemoveOne;
+    List threeElementList;
     List moreThatMaxSizeElements;
 
     @BeforeEach
@@ -17,10 +17,10 @@ public class ListTest {
         oneElementList = new List();
         oneElementList.add(2);
 
-        threeElementListRemoveOne = new List();
-        threeElementListRemoveOne.add(2);
-        threeElementListRemoveOne.add(47);
-        threeElementListRemoveOne.add(29);
+        threeElementList = new List();
+        threeElementList.add(2);
+        threeElementList.add(47);
+        threeElementList.add(29);
 
         moreThatMaxSizeElements = new List();
         moreThatMaxSizeElements.add(1);
@@ -42,8 +42,8 @@ public class ListTest {
 
     @Test
     public void whenTryToRemoveAnElement() {
-        threeElementListRemoveOne.remove(47);
-        assertEquals(2, threeElementListRemoveOne.size());
+        threeElementList.remove(47);
+        assertEquals(2, threeElementList.size());
     }
 
     @Test
