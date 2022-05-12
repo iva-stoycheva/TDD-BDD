@@ -1,14 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Calculation {
-    List<Integer> integerList = new ArrayList<Integer>();
+    private final List integerList;
 
-    public int size() {
-        return integerList.size();
-    }
-    public void addOperand(int element) {
-        integerList.add(element);
+    public Calculation(List integerList) {
+        this.integerList = integerList;
     }
 
     public boolean check(char operation) {
@@ -22,27 +16,31 @@ public class Calculation {
 
     public double calculate(char operation) {
         double result = 0;
-        double firstOperand = Integer.parseInt(String.valueOf(integerList.get(0)));
-        double secondOperand = Integer.parseInt(String.valueOf(integerList.get(1)));
+        double firstOperand = integerList.element(0);
+        double secondOperand = integerList.element(1);
 
         if(check(operation)) {
             switch (operation) {
-                case '+':
+                case '+': {
                     result = firstOperand + secondOperand;
                     break;
-                case '-':
+                }
+                case '-': {
                     result = firstOperand - secondOperand;
                     break;
-                case '*':
+                }
+                case '*': {
                     result = firstOperand * secondOperand;
                     break;
-                case '/':
+                }
+                case '/': {
                     if (secondOperand == 0) {
                         throw new ArithmeticException("Division by 0 is not possible!");
                     } else {
                         result = Math.round((firstOperand / secondOperand) * 100.0) / 100.0;
                         break;
                     }
+                }
             }
         }
         return result;

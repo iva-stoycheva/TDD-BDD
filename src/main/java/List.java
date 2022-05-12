@@ -2,6 +2,7 @@ public class List {
     final int MAX_SIZE = 5;
     private int[] array = new int[MAX_SIZE];
     private int size;
+
     public int size() {
         return size;
     }
@@ -15,5 +16,9 @@ public class List {
             if(array[index] == element)
                 size--;
         }
+    }
+
+    public int element(int index) {
+        return array[index];
     }
 }
